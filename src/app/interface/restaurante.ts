@@ -1,4 +1,5 @@
 export interface Restaurante {
+  //TODO - Añadimos la id para gestionar las id's de los elementos a eliminar
   id?: string;
   documentName: string;
   documentDescription: string;

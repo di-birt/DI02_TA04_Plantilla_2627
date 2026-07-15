@@ -91,8 +91,9 @@ export class HomePage {
     }
   }
 
-  // Muestra confirmación y borra el restaurante indicado de Firebase y de la lista local
+  // TODO - Muestra confirmación y borra el restaurante indicado de Firebase y de la lista local
   async borrarRestaurante(r: Restaurante) {
+    //TODO - Crear AlertController con header, subheader, message y buttons
     const alert = await this.alertCtrl.create({
       header: 'Confirmar borrado',
       subHeader: `¿Deseas borrar el restaurante ${r.documentName}?`,
@@ -101,13 +102,17 @@ export class HomePage {
         { text: 'Cancelar', role: 'cancel' },
         {
           text: 'Borrar', role: 'confirm', cssClass: 'danger',
+          //El handler solo se ejecuta cuando el usuario pulsa ese botón
           handler: async () => {
             if (!r.id) {
               this.mostrarToast('No se puede borrar: el restaurante no tiene ID.', 'danger');
               return;
             }
             try {
-              await this.restauranteService.delete(r.id);
+              //TODO - Llamar al método delete del servicio.
+              
+              //Actualizamos la lista restaurantesCargados filtrando todos los restaurantes que no sean este que hemos borrado.
+              //Recordar que filter recorre todos los elementos y devuelve un nuevo array solo con los que cumplen la condición.
               this.restaurantesCargados.update(lista => lista.filter(x => x.id !== r.id));
               this.mostrarToast(`${r.documentName} eliminado`, 'success');
             } catch {

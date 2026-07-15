@@ -123,6 +123,7 @@
     </ion-item>
   }
 
+  <!-- TODO - Añadir columna Borrar-->
   <!-- Tabla de restaurantes -->
   @if (restaurantesFiltrados().length > 0) {
     <div class="table-wrapper">
@@ -137,7 +138,6 @@
             <th>Web</th>
             <th>Estrellas Michelin</th>
             <th>Soles Repsol</th>
-            <th>Borrar</th>
           </tr>
         </thead>
         <tbody>
@@ -161,13 +161,8 @@
               <td class="center">
                 {{ repsolSoles(r) > 0 ? repsolSoles(r) : '-' }}
               </td>
-              <td class="center">
-                <ion-button fill="clear" color="danger" size="small"
-                  title="Borrar restaurante"
-                  (click)="borrarRestaurante(r)">
-                  Borrar
-                </ion-button>
-              </td>
+              <!--TODO - Añadir un botón que cuando hagamos click en ella llame al método borrarRestaurante pasándole el restaurante a borrar como parámetro-->
+
             </tr>
           }
         </tbody>
